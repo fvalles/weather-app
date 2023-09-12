@@ -3,7 +3,7 @@ export interface City {
   picture: string;
 }
 
-export interface Weather {
+export interface WeatherDto {
   date: string;
   city: City;
   tempType: string;
