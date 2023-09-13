@@ -2,6 +2,7 @@ import LottieView from 'lottie-react-native';
 import React, {useEffect} from 'react';
 import styled from 'styled-components/native';
 import weatherStormAnimation from '../../../assets/animations/weather-storm.json';
+import {SafeArea} from '../safe-area';
 
 /**
  * Constants
@@ -21,10 +22,6 @@ const AnimationContainer = styled.View`
   justify-content: center;
 `;
 
-const StyledSafeAreaView = styled.SafeAreaView`
-  flex: 1;
-`;
-
 /**
  * Loading Component
  */
@@ -39,17 +36,17 @@ export const Loading = ({
   }, [setIsAnimationPlaying]);
 
   return (
-    <StyledSafeAreaView>
+    <SafeArea backgroundColor="white">
       <AnimationContainer>
         <LottieView
           style={LOTTIE_DIMENSIONS}
           source={weatherStormAnimation}
           autoPlay
           loop={false}
-          duration={1000}
+          duration={1500}
           onAnimationFinish={() => setIsAnimationPlaying(false)}
         />
       </AnimationContainer>
-    </StyledSafeAreaView>
+    </SafeArea>
   );
 };

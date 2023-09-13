@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 import {Button} from '../button';
 import {H3} from '../typography/h3';
 import {Spacer} from '../spacer';
+import {SafeArea} from '../safe-area';
 
 /**
  * Styled Components
@@ -16,11 +17,6 @@ const EmptyStateContainer = styled.View`
   justify-content: center;
   padding-left: ${({theme}) => theme.Spacers.xl};
   padding-right: ${({theme}) => theme.Spacers.xl};
-`;
-
-const StyledSafeAreaView = styled.SafeAreaView`
-  background-color: ${({theme}) => theme.Colors.black};
-  flex: 1;
 `;
 
 /**
@@ -38,7 +34,7 @@ interface EmptyStateProps {
  */
 
 export const EmptyState = ({buttonTitle, title, onPress}: EmptyStateProps) => (
-  <StyledSafeAreaView>
+  <SafeArea>
     <EmptyStateContainer>
       <H3 color="white" textAlign="center">
         {title}
@@ -48,5 +44,5 @@ export const EmptyState = ({buttonTitle, title, onPress}: EmptyStateProps) => (
         <Button onPress={onPress} title={buttonTitle} />
       )}
     </EmptyStateContainer>
-  </StyledSafeAreaView>
+  </SafeArea>
 );
