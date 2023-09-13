@@ -10,7 +10,9 @@ export interface WeatherDto {
   temp: number;
 }
 
+export type TemperatureValues = Omit<WeatherDto, 'city'>;
+
 export interface WeatherByCity {
   city: City;
-  values: Omit<WeatherDto, 'city'>[];
+  values: TemperatureValues[];
 }

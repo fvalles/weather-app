@@ -41,13 +41,14 @@ export const Home = () => {
     item: {
       city: {name, picture},
     },
+    item,
   }: {
     item: WeatherByCity;
   }) => (
     <>
       <TouchableOpacity
         onPress={() => {
-          navigate('CityWeather');
+          navigate('CityWeather', {...item});
         }}>
         <CityImageContainer
           source={{uri: picture}}
@@ -55,7 +56,7 @@ export const Home = () => {
           defaultSource={cityDefaultImage}
           imageStyle={BACKGROUND_IMAGE_STYLES}>
           <CityNameContainer>
-            <H1 color="white">{name}</H1>
+            <H1>{name}</H1>
           </CityNameContainer>
         </CityImageContainer>
       </TouchableOpacity>
@@ -81,7 +82,7 @@ export const Home = () => {
     <SafeArea>
       <ScreenContainer>
         <TitleContainer>
-          <H2 color="white">Weather</H2>
+          <H2>Weather</H2>
         </TitleContainer>
         <FlatList
           data={weatherByCity}

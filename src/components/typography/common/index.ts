@@ -10,7 +10,7 @@ interface Colors {
 export const typographyBaseStyles = css<
   Pick<TextStyle, 'textAlign' | 'textTransform'> & Colors
 >`
-  ${({textAlign = 'left', textTransform = 'none', color = 'black', theme}) => `
+  ${({textAlign = 'left', textTransform = 'none', color = 'white', theme}) => `
   text-align: ${textAlign};
   text-transform: ${textTransform};
   color: ${theme.Colors[color]};

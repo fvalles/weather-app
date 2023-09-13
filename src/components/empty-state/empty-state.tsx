@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import {Button} from '../button';
-import {H3} from '../typography/h3';
 import {Spacer} from '../spacer';
 import {SafeArea} from '../safe-area';
+import {H3} from '../typography';
 
 /**
  * Styled Components
@@ -36,9 +36,7 @@ interface EmptyStateProps {
 export const EmptyState = ({buttonTitle, title, onPress}: EmptyStateProps) => (
   <SafeArea>
     <EmptyStateContainer>
-      <H3 color="white" textAlign="center">
-        {title}
-      </H3>
+      <H3 textAlign="center">{title}</H3>
       <Spacer size="m" />
       {buttonTitle && onPress && (
         <Button onPress={onPress} title={buttonTitle} />

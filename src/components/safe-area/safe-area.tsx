@@ -1,6 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {PropsWithChildren} from 'react';
-import {TouchableOpacity} from 'react-native';
 import styled from 'styled-components/native';
 import {Icon} from '../icon';
 import {KeyColors} from '../../theme/colors';
@@ -24,6 +23,10 @@ const StyledSafeAreaView = styled.SafeAreaView<{backgroundColor?: KeyColors}>`
   flex: 1;
 `;
 
+const StyledTouchableOpacity = styled.TouchableOpacity`
+  margin-left: ${({theme}) => theme.Spacers.s};
+`;
+
 /**
  * SafeArea Component
  */
@@ -38,9 +41,9 @@ export const SafeArea = ({
   return (
     <StyledSafeAreaView backgroundColor={backgroundColor}>
       {headerGoBack && (
-        <TouchableOpacity onPress={goBack}>
+        <StyledTouchableOpacity onPress={goBack}>
           <Icon name="arrow-back-outline" size={32} />
-        </TouchableOpacity>
+        </StyledTouchableOpacity>
       )}
       {children}
     </StyledSafeAreaView>
