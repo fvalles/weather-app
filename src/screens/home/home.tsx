@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {FlatList} from 'react-native';
 import {useFetchWeather} from './queries/use-fetch-weather';
 import {mapWeatherByCity} from './helpers/map-weather-by-city';
@@ -7,6 +7,8 @@ import styled from 'styled-components/native';
 import {H1, H2} from '../../components/typography';
 import {Spacer} from '../../components/spacer';
 import {Button} from '../../components/button';
+import {Loading} from '../../components/loading';
+import cityDefaultImage from '../../../assets/images/city-default-image.webp';
 
 /**
  * Constants
@@ -57,7 +59,8 @@ const TitleContainer = styled.View`
  */
 
 export const Home = () => {
-  const {data, refetch} = useFetchWeather();
+  const [isAnimationPlaying, setIsAnimationPlaying] = useState(false);
+  const {data, isLoading, isRefetching, refetch} = useFetchWeather();
 
   const weatherByCity = mapWeatherByCity(data);
 
@@ -72,6 +75,7 @@ export const Home = () => {
       <CityImageContainer
         source={{uri: picture}}
         resizeMode="cover"
+        defaultSource={cityDefaultImage}
         imageStyle={BACKGROUND_IMAGE_STYLES}>
         <CityNameContainer>
           <H1 color="white">{name}</H1>
@@ -80,6 +84,10 @@ export const Home = () => {
       <Spacer size="s" />
     </>
   );
+
+  if (isLoading || isRefetching || isAnimationPlaying) {
+    return <Loading setIsAnimationPlaying={setIsAnimationPlaying} />;
+  }
 
   return (
     <StyledSafeAreaView>
