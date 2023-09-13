@@ -9,6 +9,7 @@ import {Spacer} from '../../components/spacer';
 import {Button} from '../../components/button';
 import {Loading} from '../../components/loading';
 import cityDefaultImage from '../../../assets/images/city-default-image.webp';
+import {EmptyState} from '../../components/empty-state';
 
 /**
  * Constants
@@ -60,7 +61,7 @@ const TitleContainer = styled.View`
 
 export const Home = () => {
   const [isAnimationPlaying, setIsAnimationPlaying] = useState(false);
-  const {data, isLoading, isRefetching, refetch} = useFetchWeather();
+  const {data, error, isLoading, isRefetching, refetch} = useFetchWeather();
 
   const weatherByCity = mapWeatherByCity(data);
 
@@ -87,6 +88,16 @@ export const Home = () => {
 
   if (isLoading || isRefetching || isAnimationPlaying) {
     return <Loading setIsAnimationPlaying={setIsAnimationPlaying} />;
+  }
+
+  if (error) {
+    return (
+      <EmptyState
+        buttonTitle="Try Again"
+        title="Ops! An error occurred when trying to access the server :("
+        onPress={refetch}
+      />
+    );
   }
 
   return (
