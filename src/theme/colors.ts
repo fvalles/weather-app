@@ -5,6 +5,9 @@ export const Colors = {
   white: '#FFFFFF',
   /** Black */
   black: '#000000',
-  /** Grays */
-  gondola: '#383333',
+  /** Blues */
+  icelandicWater: '#0011FF',
 };
+
+export type ColorsType = typeof Colors;
+export type KeyColors = keyof ColorsType;
