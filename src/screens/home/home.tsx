@@ -1,7 +1,8 @@
 import React from 'react';
 import {FlatList, SafeAreaView, Text} from 'react-native';
 import {useFetchWeather} from './queries/use-fetch-weather';
-import {getCitiesNames} from './helpers/get-cities-names';
+import {mapWeatherByCity} from './helpers/map-weather-by-city';
+import {WeatherByCity} from './types';
 
 /**
  * Home Screen
@@ -10,11 +11,18 @@ import {getCitiesNames} from './helpers/get-cities-names';
 export const Home = () => {
   const {data} = useFetchWeather();
 
-  const cities = getCitiesNames(data);
+  const weatherByCity = mapWeatherByCity(data);
 
-  const renderItem = ({item}: {item: string}) => (
+  const renderItem = ({
+    item: {
+      city: {name, picture},
+    },
+  }: {
+    item: WeatherByCity;
+  }) => (
     <>
-      <Text>{item}</Text>
+      <Text>{name}</Text>
+      <Text>{picture}</Text>
     </>
   );
 
@@ -22,9 +30,9 @@ export const Home = () => {
     <SafeAreaView>
       <Text>Welcome to React Native</Text>
       <FlatList
-        data={cities}
+        data={weatherByCity}
         renderItem={renderItem}
-        keyExtractor={item => item}
+        keyExtractor={({city: {name}}) => name}
       />
     </SafeAreaView>
   );

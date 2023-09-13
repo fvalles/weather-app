@@ -9,3 +9,8 @@ export interface WeatherDto {
   tempType: string;
   temp: number;
 }
+
+export interface WeatherByCity {
+  city: City;
+  values: Omit<WeatherDto, 'city'>[];
+}
