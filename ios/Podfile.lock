@@ -516,6 +516,8 @@ PODS:
   - RNScreens (3.25.0):
     - React-Core
     - React-RCTImage
+  - RNSnackbar (2.6.2):
+    - React-Core
   - RNSVG (13.13.0):
     - React-Core
   - SDWebImage/Core (5.17.0)
@@ -597,6 +599,7 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - ReactNativeWebPFormat (from `../node_modules/react-native-webp-format`)
   - RNScreens (from `../node_modules/react-native-screens`)
+  - RNSnackbar (from `../node_modules/react-native-snackbar`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -715,6 +718,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-webp-format"
   RNScreens:
     :path: "../node_modules/react-native-screens"
+  RNSnackbar:
+    :path: "../node_modules/react-native-snackbar"
   RNSVG:
     :path: "../node_modules/react-native-svg"
   Yoga:
@@ -782,6 +787,7 @@ SPEC CHECKSUMS:
   ReactCommon: 4b2bdcb50a3543e1c2b2849ad44533686610826d
   ReactNativeWebPFormat: f5f043cc9ded052e535c3869ec341f91ba5a67c5
   RNScreens: 85d3880b52d34db7b8eeebe2f1a0e807c05e69fa
+  RNSnackbar: 3727b42bf6c4314a53c18185b5203e915a4ab020
   RNSVG: ed492aaf3af9ca01bc945f7a149d76d62e73ec82
   SDWebImage: 750adf017a315a280c60fde706ab1e552a3ae4e9
   SDWebImageWebPCoder: af09429398d99d524cae2fe00f6f0f6e491ed102
