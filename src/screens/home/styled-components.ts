@@ -22,7 +22,7 @@ export const ScreenContainer = styled.View`
   padding-bottom: ${({theme}) => theme.Spacers.xs};
   padding-left: ${({theme}) => theme.Spacers.s};
   padding-right: ${({theme}) => theme.Spacers.s};
-  padding-top: ${({theme}) => theme.Spacers.xs};
+  padding-top: ${({theme}) => theme.Spacers.s};
 `;
 
 export const TitleContainer = styled.View`

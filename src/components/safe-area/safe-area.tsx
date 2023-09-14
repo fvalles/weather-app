@@ -25,6 +25,7 @@ const StyledSafeAreaView = styled.SafeAreaView<{backgroundColor?: KeyColors}>`
 
 const StyledTouchableOpacity = styled.TouchableOpacity`
   margin-left: ${({theme}) => theme.Spacers.s};
+  margin-top: ${({theme}) => theme.Spacers.s};
 `;
 
 /**
