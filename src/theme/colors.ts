@@ -1,12 +1,9 @@
 // names based on https://colornamer.robertcooper.me/
 
 export const Colors = {
-  /** White */
   white: '#FFFFFF',
-  /** Black */
   black: '#000000',
-  /** Blues */
-  icelandicWater: '#0011FF',
+  tealMeNoLies: '#0BA5A4',
 };
 
 export type ColorsType = typeof Colors;

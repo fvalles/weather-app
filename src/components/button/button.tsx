@@ -40,7 +40,7 @@ const ButtonContainer = styled.TouchableOpacity<{backgroundColor: KeyColors}>`
  */
 
 export const Button = ({
-  backgroundColor = 'icelandicWater',
+  backgroundColor = 'tealMeNoLies',
   color = 'white',
   onPress,
   title,

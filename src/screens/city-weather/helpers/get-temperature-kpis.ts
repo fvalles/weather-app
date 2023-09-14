@@ -10,6 +10,10 @@ interface GetTemperatureKpisResponse {
   minTemperature: number;
 }
 
+/**
+ * getTemperatureKpis helper
+ */
+
 export const getTemperatureKpis = (
   temperatureValues: SortedCelsiusTemperatures[],
 ): GetTemperatureKpisResponse => {

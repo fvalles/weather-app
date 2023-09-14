@@ -1,36 +1,16 @@
 import React from 'react';
 
 import {SafeArea} from '../../components/safe-area';
-import {RouteProp, useRoute} from '@react-navigation/native';
-import {HomeStackParamList} from '../../stacks/home-stack/types';
 import {BigNumbers, H1, H3} from '../../components/typography';
-import styled from 'styled-components/native';
-import {mapTemperatureValues} from './helpers/map-temperature-values';
-import {format} from 'date-fns';
 import {Spacer} from '../../components/spacer';
-import {getTemperatureKpis} from './helpers/get-temperature-kpis';
-/**
- * Styled Components
- */
-
-const ScreenContainer = styled.View`
-  align-items: center;
-  display: flex;
-  flex: 1;
-  padding-right: ${({theme}) => theme.Spacers.s};
-  padding-left: ${({theme}) => theme.Spacers.s};
-  padding-top: ${({theme}) => theme.Spacers.m};
-  padding-bottom: ${({theme}) => theme.Spacers.xs};
-`;
-
-const MinAndMaxTemperatureContainer = styled.View`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  padding-right: ${({theme}) => theme.Spacers.xxl};
-  padding-left: ${({theme}) => theme.Spacers.xxl};
-  width: 100%;
-`;
+import {LineChart} from 'react-native-gifted-charts';
+import {Colors} from '../../theme/colors';
+import {useCityWeather} from './hooks/use-city-weather';
+import {
+  LineChartContainer,
+  MinAndMaxTemperatureContainer,
+  ScreenContainer,
+} from './styled-components';
 
 /**
  * CityWeather Screen
@@ -38,24 +18,18 @@ const MinAndMaxTemperatureContainer = styled.View`
 
 export const CityWeather = () => {
   const {
-    params: {
-      city: {name},
-      values,
-    },
-  } = useRoute<RouteProp<HomeStackParamList, 'CityWeather'>>();
-
-  const temperatureValues = mapTemperatureValues(values);
-
-  const dateString = temperatureValues[0].date.substring(0, 10);
-  const date = format(new Date(dateString), 'PPPP');
-
-  const {averageTemperature, maxTemperature, minTemperature} =
-    getTemperatureKpis(temperatureValues);
+    averageTemperature,
+    chartData,
+    cityName,
+    date,
+    maxTemperature,
+    minTemperature,
+  } = useCityWeather();
 
   return (
     <SafeArea headerGoBack>
       <ScreenContainer>
-        <H1>{name}</H1>
+        <H1>{cityName}</H1>
         <Spacer size="xs" />
         <H3>{date}</H3>
         <Spacer size="xl" />
@@ -65,6 +39,29 @@ export const CityWeather = () => {
           <H3>H: {maxTemperature}°C</H3>
           <H3>L: {minTemperature}°C</H3>
         </MinAndMaxTemperatureContainer>
+        <LineChartContainer>
+          <LineChart
+            initialSpacing={5}
+            data={chartData}
+            textColor1={Colors.white}
+            textShiftX={10}
+            textShiftY={40}
+            textFontSize={14}
+            thickness={5}
+            hideRules
+            showVerticalLines
+            verticalLinesColor={Colors.tealMeNoLies}
+            hideYAxisText
+            xAxisColor={Colors.tealMeNoLies}
+            color={Colors.tealMeNoLies}
+            yAxisColor={Colors.tealMeNoLies}
+            yAxisThickness={0}
+            isAnimated
+            dataPointsColor="white"
+            height={250}
+            curved
+          />
+        </LineChartContainer>
       </ScreenContainer>
     </SafeArea>
   );
