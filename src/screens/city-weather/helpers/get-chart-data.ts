@@ -4,7 +4,7 @@ import {SortedCelsiusTemperatures} from '../types';
  * Types
  */
 
-interface GetChartDataResponse {
+export interface GetChartDataResponse {
   value: number;
   dataPointText: string;
   label: string;

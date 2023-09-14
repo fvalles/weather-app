@@ -4,7 +4,7 @@ import {SortedCelsiusTemperatures} from '../types';
  * Types
  */
 
-interface GetTemperatureKpisResponse {
+export interface GetTemperatureKpisResponse {
   averageTemperature: number;
   maxTemperature: number;
   minTemperature: number;
