@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {FlatList, TouchableOpacity} from 'react-native';
 import {useFetchWeather} from './queries/use-fetch-weather';
 import {mapWeatherByCity} from './helpers/map-weather-by-city';
@@ -19,6 +19,8 @@ import {
 } from './styled-components';
 import {HomeStackNavigationProps} from '../../stacks/home-stack/types';
 import {SafeArea} from '../../components/safe-area';
+import {useStorage} from './hooks/use-storage';
+import {useNetInfo} from '@react-native-community/netinfo';
 
 /**
  * Constants
@@ -31,11 +33,19 @@ const BACKGROUND_IMAGE_STYLES = {opacity: 0.7, borderRadius: 10};
  */
 
 export const Home = () => {
+  const {isConnected} = useNetInfo();
   const [isAnimationPlaying, setIsAnimationPlaying] = useState(false);
   const {data, error, isLoading, isRefetching, refetch} = useFetchWeather();
   const {navigate} = useNavigation<HomeStackNavigationProps>();
+  const [storageData, setStorageData] = useStorage('weather-api-data');
 
-  const weatherByCity = mapWeatherByCity(data);
+  const weatherByCity = mapWeatherByCity(isConnected ? data : storageData);
+
+  useEffect(() => {
+    if (data && setStorageData) {
+      setStorageData(data);
+    }
+  }, [data, setStorageData]);
 
   const renderItem = ({
     item: {
@@ -68,7 +78,7 @@ export const Home = () => {
     return <Loading setIsAnimationPlaying={setIsAnimationPlaying} />;
   }
 
-  if (error) {
+  if (error && isConnected) {
     return (
       <EmptyState
         buttonTitle="Try Again"
