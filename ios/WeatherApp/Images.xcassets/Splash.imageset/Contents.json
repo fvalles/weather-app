@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "elements-icon.png",
+      "filename" : "weather-splash.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "elements-icon@2x.png",
+      "filename" : "weather-splash@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "elements-icon@3x.png",
+      "filename" : "weather-splash@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
