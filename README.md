@@ -27,3 +27,13 @@ You can run the app executing `npm run android` or `npm run ios`
 - A **custom default image** was used for the **city images** when the internet connection is lost and untill the image is fetched from the internet.
 - A **Loading** component was created with a **lottie animation**. It is rendered when the app is waiting for the API data.
 - **Custom hooks** were created for both screens to handle logic, separate concerns and improve code legibility.
+
+## Screenshots
+
+### App with internet connection (online)
+
+![online](https://github.com/fvalles/weather-app/assets/50526650/39227d77-7a6b-4bd7-9314-bac5c90160a0)
+
+### App without internet connection (offline)
+
+![offline](https://github.com/fvalles/weather-app/assets/50526650/c7f36321-6511-46dd-854f-314aa6e51ff1)
